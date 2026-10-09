@@ -1,0 +1,179 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme {
+  --container-screen-xl: 75rem;
+  --container-screen-2xl: 83.75rem;
+  --spacing-8xl: 75rem;
+  --blur-220: 220px;
+  --blur-400: 400px;
+  --font-heading: var(--font-sora), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-amber: var(--amber);
+  --color-success: var(--success);
+  --color-panel: var(--panel);
+  --color-elevated: var(--elevated);
+}
+
+:root {
+  --radius: 0.875rem;
+  --background: #0b0707;
+  --foreground: #f4ecea;
+  --card: #1a1313;
+  --card-foreground: #f4ecea;
+  --popover: #141010;
+  --popover-foreground: #f4ecea;
+  --primary: #f52027;
+  --primary-foreground: #fcfcfc;
+  --secondary: #241a1a;
+  --secondary-foreground: #f4ecea;
+  --muted: #170f10;
+  --muted-foreground: #9b8f8d;
+  --accent: #ffb020;
+  --accent-foreground: #0b0707;
+  --destructive: #f52027;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: #261c1d;
+  --ring: rgba(245, 32, 39, 0.55);
+  --amber: #ffb020;
+  --success: #2ecf7a;
+  --panel: #1a1313;
+  --elevated: #141010;
+  --glow: rgba(94, 0, 0, 0.55);
+  --glow-soft: rgba(245, 29, 49, 0.18);
+}
+
+.dark {
+  --background: #0b0707;
+  --foreground: #f4ecea;
+  --card: #1a1313;
+  --card-foreground: #f4ecea;
+  --popover: #141010;
+  --popover-foreground: #f4ecea;
+  --primary: #f52027;
+  --primary-foreground: #fcfcfc;
+  --secondary: #241a1a;
+  --secondary-foreground: #f4ecea;
+  --muted: #170f10;
+  --muted-foreground: #9b8f8d;
+  --accent: #ffb020;
+  --accent-foreground: #0b0707;
+  --destructive: #f52027;
+  --border: rgba(255, 255, 255, 0.08);
+  --input: #261c1d;
+  --ring: rgba(245, 32, 39, 0.55);
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--border);
+  }
+
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    font-style: normal;
+  }
+}
+
+@layer utilities {
+  .container {
+    @apply mx-auto w-full max-w-8xl px-5 py-0 sm:px-7;
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .font-heading {
+    font-family: var(--font-heading);
+  }
+
+  .glow-orb {
+    background: radial-gradient(circle, var(--glow-soft), transparent 70%);
+  }
+
+  .surface-panel {
+    @apply border border-white/10 bg-card/60 backdrop-blur-sm;
+  }
+
+  .surface-box {
+    @apply rounded-2xl border border-white/10 bg-card/50 backdrop-blur-sm;
+  }
+
+  .surface-box-lg {
+    @apply rounded-[1.75rem] border border-white/10 bg-card/40 backdrop-blur-sm;
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #fff 0%, #f4ecea 40%, #ff8a8f 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+html {
+  /* Instant page transitions — avoid smooth scroll-to-top before route change */
+  scroll-behavior: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+section {
+  @apply bg-transparent;
+}
